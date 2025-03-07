@@ -1,0 +1,17 @@
+:root {
+    --background-color: #181414;
+}
+
+body {
+    color: white;
+    background-color: var(--background-color);
+}
+
+
+.back-gradient {
+    position: fixed;
+    top: 20px;
+    filter: blur(400px);
+    /* opacity: 50%; */
+    z-index: -1;
+}

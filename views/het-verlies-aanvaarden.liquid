@@ -13,4 +13,8 @@
 {% endfor %}
 </ul>
 
+{% for task in task %}
+  <img class="back-gradient" src="assets/{{ task.title }}.png" alt="{{ task.title }}">
+{% endfor %}
+
 {% render 'partials/foot.liquid' %}
