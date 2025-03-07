@@ -1,0 +1,16 @@
+{% render 'partials/head.liquid' %}
+
+<ul>
+{% for task in task %}    
+    <li>{{ task.title }}</li>
+{% endfor %}
+</ul>
+
+<h2>Oefeningen</h2>
+<ul>
+{% for exercise in exercise %}
+    <li>{{ exercise.title }} <br> {{ exercise.description }}</li>
+{% endfor %}
+</ul>
+
+{% render 'partials/foot.liquid' %}

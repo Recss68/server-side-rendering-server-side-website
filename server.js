@@ -6,7 +6,7 @@ import express from 'express'
 import { Liquid } from 'liquidjs';
 
 
-console.log('Hieronder moet je waarschijnlijk nog wat veranderen')
+// console.log('Hieronder moet je waarschijnlijk nog wat veranderen')
 // Doe een fetch naar de data die je nodig hebt
 // const apiResponse = await fetch('...')
 
@@ -36,8 +36,13 @@ app.set('views', './views')
 // Maak een GET route voor de index (meestal doe je dit in de root, als /)
 app.get('/', async function (request, response) {
    // Render index.liquid uit de Views map
+   const taskResponse = await fetch('https://fdnd-agency.directus.app/items/dropandheal_task')
+   const taskResponseJSON = await taskResponse.json()
+ 
    // Geef hier eventueel data aan mee
-   response.render('index.liquid')
+   response.render('index.liquid', {
+     task: taskResponseJSON.data,
+   })
 })
 
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
@@ -57,3 +62,23 @@ app.listen(app.get('port'), function () {
   // Toon een bericht in de console en geef het poortnummer door
   console.log(`Application started on http://localhost:${app.get('port')}`)
 })
+
+// Voorbeeld van fetch 
+  // const squadResponse = await fetch('https://fdnd.directus.app/items/squad?filter={"_and":[{"cohort":"2425"},{"tribe":{"name":"FDND Jaar 1"}}]}')
+
+  // https://fdnd-agency.directus.app/items/dropandheal_task
+  // https://fdnd-agency.directus.app/items/dropandheal_exercise
+  // https://fdnd-agency.directus.app/items/dropandheal_messages
+
+app.get('/het-verlies-aanvaarden', async function (request, response) {
+  const taskResponse = await fetch('https://fdnd-agency.directus.app/items/dropandheal_task/?filter={"id":1}')
+  const exerciseResponse = await fetch('https://fdnd-agency.directus.app/items/dropandheal_exercise/?filter={"task":1}')
+  const taskResponseJSON = await taskResponse.json()
+  const exerciseResponseJSON = await exerciseResponse.json()
+
+  response.render('het-verlies-aanvaarden.liquid', {
+    task: taskResponseJSON.data,
+    exercise: exerciseResponseJSON.data
+  })
+})
+

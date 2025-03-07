@@ -1,1 +1,9 @@
-Succes!
+{% render 'partials/head.liquid' %}
+
+<ul>
+{% for tasks in task %}    
+    <li>{{ tasks.title }}</li>
+{% endfor %}
+</ul>
+
+{% render 'partials/foot.liquid' %}
