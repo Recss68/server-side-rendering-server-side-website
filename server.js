@@ -78,7 +78,6 @@ app.get('/het-verlies-aanvaarden', async function (request, response) {
   const exerciseResponseJSON = await exerciseResponse.json()
 
   response.render('het-verlies-aanvaarden.liquid', {
-    title: 'Het verlies aanvaarden',
     task: taskResponseJSON.data,
     exercise: exerciseResponseJSON.data
   })
