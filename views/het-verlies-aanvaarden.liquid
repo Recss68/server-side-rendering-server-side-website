@@ -1,20 +1,54 @@
 {% render 'partials/head.liquid' %}
 
-<ul>
-{% for task in task %}    
-    <li>{{ task.title }}</li>
-{% endfor %}
-</ul>
+  <section class="nav-bar">
+    <div class="nav-header">
+      <h1>{{ task.0.title }}</h1>
+      <button class="dropdown-btn">▼ </button>
+    </div>  
+    <div class="progress-container">
+    <span class="progress-bar"></span>
+    <span class="progress-text">10% voltooid</span>
+    </div>
+  </section>
 
-<h2>Oefeningen</h2>
-<ul>
-{% for exercise in exercise %}
-    <li>{{ exercise.title }} <br> {{ exercise.description }}</li>
-{% endfor %}
-</ul>
+  <section class="hero">
+    <img class="hero-img" src="assets/{{ task.0.title }}.png">
+    <img class="gradient-left" src="assets/{{ task.0.title }}.png">
+    <img class="gradient-right" src="assets/{{ task.0.title }}.png">
+    <div class="hero-text">
+      <h2>Rouwstappen van de dag</h2>
+      <p>4 oefeningen open vandaag</p>
+    </div>
+  </section>
 
-{% for task in task %}
-  <img class="back-gradient" src="assets/{{ task.title }}.png" alt="{{ task.title }}">
-{% endfor %}
+  <section class="exercise-container">
+  {% for exercise in exercise %}
+    <article class="exercise-card">
+      <figure class="exercise-image-container">
+        <img src="https://fdnd-agency.directus.app/assets/{{ exercise.image }}?width=200&height=200" alt="Task Image" class="exercise-image">
+        <button class="start-button">Start oefening</button>
+      </figure>
 
+      <section class="exercise-content">
+        <header>
+          <p class="exercise-category">Schrijven</p>
+          <h2>{{ exercise.title }}</h2>
+        </header>
+
+        <section class="exercise-info">
+          <div class="community-drops">
+            <span class="drop-color" style="background: cyan;"></span>
+            <span class="drop-color" style="background: magenta;"></span>
+            <span class="drop-color" style="background: purple;"></span>
+            <span class="drop-text">47 community drops</span>
+          </div>
+          <div class="info-badge">⏳ 25 min</div>
+          <div class="info-badge">💡 3 tips</div>
+        </section>
+      </section>
+    </article>
+    {% endfor %}
+      <p class="end-text">Einde voor vandaag</p>
+  </section>
+      
 {% render 'partials/foot.liquid' %}
