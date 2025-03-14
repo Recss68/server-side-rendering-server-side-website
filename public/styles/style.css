@@ -133,7 +133,7 @@ body {
             font-family: Arial, Helvetica, sans-serif;
             margin-top: 10px;
             color: var(--gray);
-            font-size: var(--size-xxs);
+            font-size: var(--size-default);
         }
     }
 }
